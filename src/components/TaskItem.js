@@ -11,7 +11,7 @@ const TaskItem = () => {
 
     useEffect(() => {
          const fetchData = () => {
-                axios.get(`http://127.0.0.1:5000/tasks/${id}`, {headers: header})
+                axios.get(`${process.env.REACT_APP_BE_URL}tasks/${id}`, {headers: header})
                     .then(response => {
                         console.log(response.data)
                         setTasks(response.data);
@@ -26,7 +26,7 @@ const TaskItem = () => {
     }, []);
 
     const handleDelete = (task_id) => {
-        axios.delete(`http://127.0.0.1:5000/tasks/${task_id}`, {headers: header})
+        axios.delete(`${process.env.REACT_APP_BE_URL}tasks/${task_id}`, {headers: header})
             .then(response => {
                 console.log("Done");
                 return navigate("/");

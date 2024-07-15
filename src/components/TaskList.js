@@ -8,7 +8,7 @@ const TaskList = () => {
     const header = {Authorization: `Bearer ${Cookies.get('token')}`}
     useEffect(() => {
         const fetchData = () => {
-            axios.get('http://127.0.0.1:5000/tasks', {headers: header})
+            axios.get(`${process.env.REACT_APP_BE_URL}tasks`, {headers: header})
                 .then(response => {
                     setTasks(response.data);
                 })

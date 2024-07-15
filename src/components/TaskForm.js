@@ -13,7 +13,7 @@ const TaskForm = () => {
         if ({id}.id) {
             // eslint-disable-next-line react-hooks/rules-of-hooks
             const fetchData = () => {
-                axios.get(`http://127.0.0.1:5000/tasks/${id}`, {headers: header})
+                axios.get(`${process.env.REACT_APP_BE_URL}tasks/${id}`, {headers: header})
                     .then(response => {
                         setName(response.data.title);
                     })
@@ -32,7 +32,7 @@ const TaskForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if ({id}.id) {
-            axios.put(`http://127.0.0.1:5000/tasks/${id}`, {title: name}, {headers: header})
+            axios.put(`${process.env.REACT_APP_BE_URL}tasks/${id}`, {title: name}, {headers: header})
                 .then(response => {
                     console.log(response.data);
                     setName('');
@@ -43,7 +43,7 @@ const TaskForm = () => {
                     alert(error.response.statusText)
                 });
         } else {
-            axios.post('http://127.0.0.1:5000/tasks', {title: name}, {headers: header})
+            axios.post(`${process.env.REACT_APP_BE_URL}tasks`, {title: name}, {headers: header})
                 .then(response => {
                     console.log(response.data);
                     setName('');
